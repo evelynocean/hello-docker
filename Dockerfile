@@ -4,7 +4,7 @@ RUN git clone https://github.com/evelynocean/hello-docker.git /go/src/hello
 #RUN mkdir -p /go/src/hello
 #COPY ./ /go/src/hello
 
-RUN cd /go/src/hello && go build
+RUN cd /go/src/hello && go build && chmod 777 hello.sh
 
 WORKDIR /go/src/hello
 
