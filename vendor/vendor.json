@@ -1,0 +1,31 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "3HFUqdhX43kNPJe18WJWCVkthKI=",
+			"path": "github.com/gorilla/mux",
+			"revision": "2d5fef06b891c971b14aa6f71ca5ab6c03a36e0e",
+			"revisionTime": "2017-11-09T03:54:02Z"
+		},
+		{
+			"checksumSHA1": "MpWI8ftG0xPuAALFyX/1AwRFB2o=",
+			"path": "github.com/syhlion/httplog",
+			"revision": "5be625654f5522a14f65b64f24472146e757c8dd",
+			"revisionTime": "2017-03-23T03:30:29Z"
+		},
+		{
+			"checksumSHA1": "mAdNmkQqto8QxX9wCj5Kq0sJku8=",
+			"path": "github.com/syhlion/restresp",
+			"revision": "7fe232e5b740c723d2dd7c5e079490f70feee515",
+			"revisionTime": "2017-03-23T03:26:40Z"
+		},
+		{
+			"checksumSHA1": "ETvP7ajACFASoD2T2vYWoSfkuq0=",
+			"path": "github.com/urfave/negroni",
+			"revision": "5dbbc83f748fc3ad38585842b0aedab546d0ea1e",
+			"revisionTime": "2017-11-12T01:17:08Z"
+		}
+	],
+	"rootPath": "test/docker/hello"
+}
