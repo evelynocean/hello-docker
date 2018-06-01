@@ -6,6 +6,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gorilla/mux"
 	"github.com/syhlion/httplog"
@@ -21,7 +22,26 @@ func main() {
 	}
 
 	publicAPIError := make(chan error)
+	// NSQMessages := make(chan string, 200)
+	// config := nsq.NewConfig()
 
+	// q, er := nsq.NewConsumer("hello", "test", config)
+	// if er != nil {
+	// 	log.Panic("-- ----------------- NewConsumer :", er)
+	// }
+
+	// q.AddHandler(nsq.HandlerFunc(func(message *nsq.Message) error {
+
+	// 	message.DisableAutoResponse()
+	// 	defer message.Finish()
+	// 	fmt.Println("string(message.Body):", string(message.Body))
+	// 	NSQMessages <- string(message.Body)
+	// 	return nil
+	// }))
+
+	// if err := q.ConnectToNSQLookupd("127.0.0.1:4161"); err != nil {
+	// 	log.Panic("------------------- ConnectToNSQLookupd: ", err)
+	// }
 	r := mux.NewRouter()
 	sub := r.PathPrefix("/api").Subrouter()
 	sub.HandleFunc("/hello", index()).Methods("GET")
@@ -29,7 +49,7 @@ func main() {
 	n := negroni.New()
 	n.Use(httplog.NewLogger())
 	n.UseHandler(r)
-
+	fmt.Println("service start:")
 	go func() {
 		publicAPIError <- http.Serve(apiListener, n)
 	}()
@@ -46,10 +66,14 @@ func main() {
 	}
 }
 
+//NSQMessages chan string
 func index() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// fmt.Println("Hello World")
-		restresp.Write(w, "Hello World", http.StatusOK)
+		// select {
+		// case s := <-NSQMessages:
+		str := time.Now().Format("2006-01-02 15:04:05")
+		restresp.Write(w, str, http.StatusOK)
+		// }
 		return
 	}
 
