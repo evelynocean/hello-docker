@@ -10,7 +10,7 @@ WORKDIR /go/src/hello
 
 EXPOSE 1031
 
-CMD ["./hello.sh"]
+ENTRYPOINT ["./hello"]
 
 # docker build -t hello -f Dockerfile .
 # docker run --name hello -d -p 127.0.0.1:1031:1031 hello
